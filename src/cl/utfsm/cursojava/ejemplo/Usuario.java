@@ -12,9 +12,15 @@ public class Usuario {
 		claveDB = 1;
 	}
 	
+	
+	
 	public Usuario(String nombre, int claveDB){
 		this.nombre = nombre;
 		this.claveDB = claveDB;
+	}
+	
+	public Usuario(String nombre){
+		this(nombre,2);
 	}
 	
 	
@@ -29,6 +35,10 @@ public class Usuario {
 	
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public void login(){
+		System.out.println("Login en la DB");
 	}
 	
 }

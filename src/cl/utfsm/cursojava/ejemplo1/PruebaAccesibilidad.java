@@ -21,6 +21,10 @@ public class PruebaAccesibilidad {
 		System.out.println("con params: "+ usuario2.getNombre());
 		
 		Usuario usuario3 = new Usuario();
-		System.out.println("sin params: "+ usuario3.getNombre());
+		System.out.println("sin params: "+ usuario3.getNombre()+ "clave: "+ usuario3.getClaveDB());
+		
+		Usuario usuario4 = new Usuario("solo nombre");
+		System.out.println("solo nombre params: "+ usuario4.getNombre()+ "clave: "+ usuario4.getClaveDB());
+		
 	}
 }
