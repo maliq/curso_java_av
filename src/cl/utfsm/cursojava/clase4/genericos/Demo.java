@@ -22,7 +22,6 @@ public class Demo {
 //		list1.add(new Alumno("", 2));
 		list1.add("dos");
 		retorno = list1.get(0);
-		
 
 	}
 
