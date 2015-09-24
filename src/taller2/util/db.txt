@@ -1,0 +1,3 @@
+usuario = taller2
+clave = taller2
+db= test

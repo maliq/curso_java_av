@@ -1,26 +1,40 @@
 package taller2.util;
 
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
-public class DbUtil {
+import taller2.act1.PropiedadUtil;
+
+public class DbUtil2 {
 
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost/test";
+	static final String DB_URL = "jdbc:mysql://localhost/";
 
-	// Database credentials
-	static final String USER = "curso";
-	static final String PASS = "curso";
+	PropiedadUtil propiedadUtil;
 
-	public DbUtil() {
-		// TODO Auto-generated constructor stub
+	public DbUtil2() {
+		propiedadUtil = new PropiedadUtil();
 	}
 
-	public static Connection getConnection() {
+	public Connection getConnection() {
+		URL dbUrl = this.getClass().getResource("db.txt");
+		Map<String, String> map = null;
+		try {
+			map = PropiedadUtil.getPropiedades(dbUrl.toURI());
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String user = map.get("usuario");
+		String pass = map.get("clave");
+		String dbName = map.get("db");
 		Connection conn = null;
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
@@ -28,28 +42,16 @@ public class DbUtil {
 			e.printStackTrace();
 		}
 		try {
-			conn = java.sql.DriverManager.getConnection(DB_URL, USER, PASS);
-			//conn.setAutoCommit(false);
+			conn = java.sql.DriverManager.getConnection(DB_URL+dbName, user, pass);
+			conn.setAutoCommit(false);
 		} catch (java.sql.SQLException e) {
 			e.printStackTrace();
 		}
 		return conn;
 	}
 	
-	public static void crearTablaUsuario() throws SQLException{
-		Connection connection = DbUtil.getConnection();
-		Statement stmt = connection.createStatement();
-		String sql = "CREATE TABLE Usuario " +
-                "(alias VARCHAR(255), " + 
-                " nombre VARCHAR(255), " + 
-                " edad INTEGER, " + 
-                " PRIMARY KEY ( alias ))"; 
-		stmt.executeUpdate(sql);
-	}
-	
 	public static void main(String[] args) throws SQLException {
-//		DbUtil.crearTablaUsuario();
-		Connection connection = DbUtil.getConnection();
+		Connection connection = new DbUtil2().getConnection();
 		Statement stmt = connection.createStatement();
 		ResultSet rs = stmt.executeQuery("Select * from Usuario");
 		while(rs.next()){
