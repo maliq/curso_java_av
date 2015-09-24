@@ -5,6 +5,9 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,7 +26,7 @@ public class Archivos {
 			System.out.println("Error de E/S:" + e);
 		}
 	}
-	
+
 	public void leerArchivo() {
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -52,16 +55,25 @@ public class Archivos {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void leerArchivo2() {
 		Path path = Paths.get("entrada.txt");
 		try {
 			List<String> lineas = Files.readAllLines(path, StandardCharsets.UTF_8);
-			for(String linea: lineas)
+			for (String linea : lineas)
 				System.out.println(linea);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public void leerArchivo3() throws IOException {
+		InputStream is = this.getClass().getResourceAsStream("test.txt");
+		BufferedReader br = new BufferedReader(new InputStreamReader(is));
+		String linea;
+		while ((linea = br.readLine()) != null) {
+			System.out.println(linea);
 		}
 	}
 
@@ -87,20 +99,19 @@ public class Archivos {
 		}
 	}
 
-	
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Archivos archivos = new Archivos();
-//		 archivos.escribirArchivo();
-//		 archivos.leerArchivo();
-//		archivos.escribirArchivo2();
-//		archivos.leerArchivo2();
-		try {
-			archivos.leerEscribirArchivo("entrada.txt", "salida.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// archivos.escribirArchivo();
+//		archivos.leerArchivo();
+		archivos.leerArchivo3();
+		// archivos.escribirArchivo2();
+		// archivos.leerArchivo2();
+		// try {
+		// archivos.leerEscribirArchivo("entrada.txt", "salida.txt");
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 	}
 
 }
