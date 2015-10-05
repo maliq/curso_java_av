@@ -41,7 +41,7 @@ public class JTextFieldDemo extends JFrame{
 		JPasswordField jPasswordField1= new JPasswordField();
 		jPasswordField1.setColumns(10);
 		jPasswordField1.setText("hola");
-		jPasswordField1.setEchoChar('?');
+		jPasswordField1.setEchoChar('*');
 		String st = new String(jPasswordField1.getPassword());
 		jPanel2.add(jPasswordField1, BorderLayout.EAST);
 	}

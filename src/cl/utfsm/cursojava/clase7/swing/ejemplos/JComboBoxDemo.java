@@ -34,40 +34,39 @@ public class JComboBoxDemo extends JFrame{
 		jPanel3.add(jComboBox1);
 		
 
-//		JButton jButton1 = new JButton("Mostrar");
-//		jButton1.addMouseListener(new MouseListener() {
-//			
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void mousePressed(MouseEvent e) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void mouseReleased(MouseEvent e) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void mouseEntered(MouseEvent e) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void mouseExited(MouseEvent e) {
-//				String seleccionado = (String) jComboBox1.getSelectedItem();
-//				JOptionPane.showMessageDialog(JComboBoxDemo.this,seleccionado);
-//			}
-//		});
-//		jPanel3.add(jButton1);
+		JButton jButton1 = new JButton("Mostrar");
+		jButton1.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String seleccionado = (String) jComboBox1.getSelectedItem();
+				JOptionPane.showMessageDialog(JComboBoxDemo.this,seleccionado);
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+			}
+		});
+		jPanel3.add(jButton1);
 	}
 	
 	public void ejemplo2(){

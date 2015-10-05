@@ -8,7 +8,8 @@ public class JFileChooserDemo extends JFrame {
 
 	public JFileChooserDemo() {
 //		showSaveDialog();
-		showOpenDialog1();
+//		showOpenDialog1();
+		showOpenDialog();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 	}
